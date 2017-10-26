@@ -69,7 +69,11 @@ class UserCreate(CreateView):
 class AccountUpdate(UpdateView):
     model = Account
     fields = ['account_number', 'routing_number', 'account_name', 'account_street', 'account_state', 'account_city', 'account_zip', 'checks_bounced']
-    
+
+class CheckUpdate(UpdateView):
+    model = Check
+    fields = ['user', 'account', 'check_amount', 'check_number', 'cashier_name', 'letter_date1', 'letter_date2', 'letter_date3', 'check_status']
+
 
 class AccountDelete(DeleteView):
     model = Account

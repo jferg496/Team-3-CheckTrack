@@ -37,6 +37,7 @@ urlpatterns = [
     
     # /check/account/pk/
     url(r'accounts/account-update/(?P<pk>[0-9]+)/$', views.AccountUpdate.as_view(), name="account-update"),
+    url(r'checks/check-update/(?P<pk>[0-9]+)/$', views.CheckUpdate.as_view(), name="check-update"),
     
     # /check/account/pk/delete/
     url(r'^(?P<pk>[0-9]+)/delete/$', views.AccountDelete.as_view(), name="account-delete"),

@@ -3,5 +3,6 @@
 {% block body %}
 <h2>Check Number: {{ check.check_number}}</h2>
 <h2>Check Amount: {{ check.check_amount}}</h2>
+<h4><a href="{% url 'check:check-update' check.id %}">Edit Check</a></h4>
 
 {% endblock %}
