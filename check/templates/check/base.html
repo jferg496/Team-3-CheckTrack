@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}CheckTrack{% endblock %}</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'check/style.css' %}" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    </head>
+    <body>
+        
+        <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{% url 'check:index' %}">CheckTrack</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="topNavBar">
+                        <ul class="nav navbar-nav">
+                            <li class="">
+                                <a href="{% url 'check:accountindex' %}">
+                                    <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>&nbsp; Accounts
+                                </a>
+                            </li>
+                            <li class="">
+                                    <a href="{% url 'check:checkindex' %}">
+                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp; Checks
+                                    </a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                                <li class="">
+                                        <a href="{% url 'check:check-add' %}">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Check
+                                        </a>
+                                </li>
+                                <li class="">
+                                        <a href="{% url 'check:account-add' %}">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Account
+                                        </a>
+                                </li>
+                                <li class="">
+                                        <a href="{% url 'check:bank-add' %}">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Bank
+                                        </a>
+                                </li>
+                                <li class="">
+                                        <a href="{% url 'check:store-add' %}">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Store
+                                        </a>
+                                </li>
+                                <li class="">
+                                        <a href="{% url 'check:user-add' %}">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add User
+                                        </a>
+                                </li>
+                                <li class="">
+                                    <a href="#">
+                                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; Logout
+                                    </a>
+                                </li>
+                        </ul>
+            
+                    </div>
+                </div>
+            </nav>
+    {% block body %}
+    {% endblock %}
+    </body>
+</html>

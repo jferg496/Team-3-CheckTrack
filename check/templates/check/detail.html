@@ -1,0 +1,15 @@
+{% extends 'check/base.html' %}
+{% block title %}Account Details{% endblock %}
+{% block body %}
+<h1>Account Details</h1>
+<h2>Account Name: {{ account.account_name}}</h2>
+<h2>Account Number: {{ account.account_number}}</h2>
+<h4><a href="{% url 'check:account-update' account.id %}">Edit Account</a></h4>
+<h3>Unpaid Checks</h3>
+    {% for check in account.check_set.all %}
+        <label for="check{{ forloop.counter }}">
+            Check Number: {{ check.check_number }} - Check Amount: {{ check.check_amount }} - Check Paid: {{ check.check_status }}
+        </label><br>
+    {% endfor %}
+
+{% endblock %}
