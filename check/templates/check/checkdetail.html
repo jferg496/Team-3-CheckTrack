@@ -1,7 +1,8 @@
 {% extends 'check/base.html' %}
 {% block title %}Check Details{% endblock %}
 {% block body %}
-<h1>Check Details <a href="{% url 'check:check-update' check.id %}">-edit-</a>
+<font color="#ffffff">
+<h1>Check Details <a href="{% url 'check:check-update' check.id %}"><font color="#ffffff">-edit-</font></a>
     <form action="{% url 'check:check-delete' check.id %}" method="post" style="display: inline;">
     {% csrf_token %}
     <input type="hidden" name="check_id" value="{{ check.id }}"/>
@@ -13,4 +14,5 @@
 <h2>{{ check.account }}</h2>
 <h2>Check Number: {{ check.check_number}}</h2>
 <h2>Check Amount: {{ check.check_amount}}</h2>
+</font>
 {% endblock %}

@@ -1,11 +1,12 @@
 {% extends 'check/base.html' %}
 {% block body %}
-
+<font color="#ffffff">
         
         <ul>
             <h1>Checks</h1>
             {% for check in all_checks %}
-            <h3><a href="{% url 'check:checkdetail' check.id %}">{{ check.account }} - Check Number: {{ check.check_number }}</a></h3>
+            <h3><a href="{% url 'check:checkdetail' check.id %}"><font color="#ffffff">{{ check.account }} - Check Number: {{ check.check_number }}</font></a></h3>
             {% endfor %}
         </ul>
+    </font>
 {% endblock %}

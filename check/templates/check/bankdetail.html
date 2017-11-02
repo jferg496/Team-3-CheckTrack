@@ -1,12 +1,12 @@
 {% extends 'check/base.html' %}
 {% block title %}Bank Details{% endblock %}
 {% block body %}
-<h2>Bank Name: {{ bank.bank_name}} <a href="{% url 'check:bank-update' bank.id %}">-edit-</a> 
+<font color="#ffffff"><h2>Bank Name: {{ bank.bank_name}} <a href="{% url 'check:bank-update' bank.id %}"><font color="#ffffff">-edit-</font></a></font> 
     <form action="{% url 'check:bank-delete' bank.id %}" method="post" style="display: inline;">
         {% csrf_token %}
         <input type="hidden" name="bank_id" value="{{ bank.id }}"/>
         <button type="submit" class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-trash"></span>
+            <font color="#ffffff"></font><span class="glyphicon glyphicon-trash"></span></button>
         </button>
     </form>
 </h2>
