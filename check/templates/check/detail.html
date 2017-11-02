@@ -1,15 +1,22 @@
 {% extends 'check/base.html' %}
 {% block title %}Account Details{% endblock %}
 {% block body %}
-<h1>Account Details</h1>
+<font color="#ffffff"><h1>Account Details <a href="{% url 'check:account-update' account.id %}"><font color="#ffffff">-edit account-</font></a>
+    <form action="{% url 'check:account-delete' account.id %}" method="post" style="display: inline;">
+        {% csrf_token %}
+        <input type="hidden" name="account_id" value="{{ account.id }}"/>
+        <button type="submit" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
+    </form>
+</h1>
 <h2>Account Name: {{ account.account_name}}</h2>
 <h2>Account Number: {{ account.account_number}}</h2>
-<h4><a href="{% url 'check:account-update' account.id %}">Edit Account</a></h4>
 <h3>Unpaid Checks</h3>
     {% for check in account.check_set.all %}
         <label for="check{{ forloop.counter }}">
             Check Number: {{ check.check_number }} - Check Amount: {{ check.check_amount }} - Check Paid: {{ check.check_status }}
         </label><br>
     {% endfor %}
-
+</font>
 {% endblock %}
