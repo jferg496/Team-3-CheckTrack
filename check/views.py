@@ -7,7 +7,7 @@ from .models import Account, Check, Bank, Store, User, Client
 from django.contrib.auth.decorators import login_required
 
 
-@login_required(login_url="/login/")
+#@login_required(login_url="/login/")
 def index(request):
     all_accounts = Account.objects.all()
     template = loader.get_template('check/index.html')
