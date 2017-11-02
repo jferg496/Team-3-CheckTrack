@@ -1,8 +1,17 @@
 {% extends 'check/base.html' %}
 {% block title %}Check Details{% endblock %}
 {% block body %}
-<h2>Store Name: {{ user.user_store}}</h2>
+<h1>User Details <a href="{% url 'check:user-update' user.id %}">-edit-</a>
+    <form action="{% url 'check:user-delete' user.id %}" method="post" style="display: inline;">
+        {% csrf_token %}
+        <input type="hidden" name="user_id" value="{{ user.id }}"/>
+        <button type="submit" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
+    </form>
+</h1>
 <h2>User Name: {{ user.user_name}}</h2>
+<h2>Store Name: {{ user.user_store }}</h2>
 <h2>User Position: {{ user.user_position}}</h2>
 
 {% endblock %}

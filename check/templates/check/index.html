@@ -1,6 +1,27 @@
 {% extends 'check/base.html' %}
 {% block body %}
 
-        <h1>MainPage</h1>
+        <h1>                            
+                <ul>
+                <a href="{% url 'check:accountindex' %}">
+                        <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>&nbsp; Accounts
+                </a><br>
+                <a href="{% url 'check:checkindex' %}">
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp; Checks
+                </a><br>
+                <a href="{% url 'check:userindex' %}">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Users
+                </a><br>
+                <a href="{% url 'check:bankindex' %}">
+                                <span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>&nbsp; Banks
+                </a><br>
+                <a href="{% url 'check:storeindex' %}">
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; Stores
+                </a><br>
+                <a href="{% url 'check:clientindex' %}">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Clients
+                </a><br>
+        </ul>
+        </h1>
        
 {% endblock %}

@@ -1,10 +1,11 @@
 {% extends 'check/base.html' %}
 {% block body %}
 
-        <h2>All Checks</h2>
+        
         <ul>
+            <h1>Checks</h1>
             {% for check in all_checks %}
-            <li><a href="{% url 'check:checkdetail' check.id %}">{{ check.account }} - Check Number: {{ check.check_number }}</a></li><br>
+            <h3><a href="{% url 'check:checkdetail' check.id %}">{{ check.account }} - Check Number: {{ check.check_number }}</a></h3>
             {% endfor %}
         </ul>
 {% endblock %}

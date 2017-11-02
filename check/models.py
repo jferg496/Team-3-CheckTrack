@@ -42,7 +42,7 @@ class Account(models.Model):
         return reverse('check:detail', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return 'Account Name: ' + self.account_name + ' - Account Number: ' + self.account_number + ' - Routing Number: ' + self.routing_number
+        return self.account_name + ' - Account Number: ' + self.account_number
 
 class Check(models.Model):
     user = models.ForeignKey('User', on_delete=models.CASCADE)

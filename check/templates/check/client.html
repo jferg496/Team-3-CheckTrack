@@ -1,0 +1,11 @@
+{% extends 'check/base.html' %}
+{% block body %}
+
+        
+        <ul>
+            <h1>Clients</h1>
+            {% for client in all_clients %}
+            <h3><a href="{% url 'check:clientdetail' client.id %}">{{ client.client_name }}</a></h3>
+            {% endfor %}
+        </ul>
+{% endblock %}

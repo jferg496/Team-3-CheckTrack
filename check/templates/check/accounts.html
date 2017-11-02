@@ -1,12 +1,15 @@
 {% extends 'check/base.html' %}
 {% block body %}
 
-        <h3>Account List</h3>
+       
         <ul>
+                <h1>Accounts</h1>
             {% for account in all_accounts %}
-            <li>
-                <a href="{% url 'check:detail' account.id %}">Account Name: {{ account.account_name }} - Account Number: {{ account.account_number }}</a>
-            </li>
+            
+                <h3>
+                <a href="{% url 'check:detail' account.id %}">{{ account.account_name }} - Account Number: {{ account.account_number }}</a>
+                </h3>
+            
             {% endfor %}
         </ul>
 {% endblock %}
