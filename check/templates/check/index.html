@@ -1,16 +1,5 @@
 {% extends 'check/base.html' %}
 {% block body %}
-<<<<<<< HEAD
-
-{% if user.is_authenticated %}
-<p>hello</p>
-<p>welcome {{ user.username }}</p>
-<p><a href="/logout">Logout</a></p>
-
-
-
-        <h1>MainPage</h1>
-=======
         <h1>                            
                 <ul>
                 <a href="{% url 'check:accountindex' %}">
@@ -33,12 +22,5 @@
                 </a><br>
                 </ul>
         </h1>
->>>>>>> fb8cd4a832719bb5b237ff24f3ed3c837f85d068
        
-
-{% else %}
-<p><a href="/login">Login</a></p>
-
-{% endif %}
-
 {% endblock %}
