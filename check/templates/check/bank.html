@@ -1,0 +1,11 @@
+{% extends 'check/base.html' %}
+{% block body %}
+
+        
+        <ul>
+            <h1>Banks</h1>
+            {% for bank in all_banks %}
+            <h3><a href="{% url 'check:bankdetail' bank.id %}">{{ bank.bank_name }}</a></h3>
+            {% endfor %}
+        </ul>
+{% endblock %}
