@@ -17,7 +17,6 @@ def index(request):
 class AccountIndexView(generic.ListView):
     template_name = 'check/accounts.html'
     context_object_name = 'all_accounts'
-
     def get_queryset(self):
         return Account.objects.all()
 
