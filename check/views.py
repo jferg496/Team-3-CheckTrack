@@ -4,10 +4,13 @@ from django.template import loader
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from .models import Account, Check, Bank, Store, User, Client
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
+def logout(request):
+    logout(request)
 
-#@login_required(login_url="/login/")
+@login_required(login_url="/login/")
 def index(request):
     all_accounts = Account.objects.all()
     template = loader.get_template('check/index.html')
@@ -17,7 +20,6 @@ def index(request):
 class AccountIndexView(generic.ListView):
     template_name = 'check/accounts.html'
     context_object_name = 'all_accounts'
-
     def get_queryset(self):
         return Account.objects.all()
 
