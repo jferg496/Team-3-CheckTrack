@@ -7,9 +7,9 @@ from .models import Account, Check, Bank, Store, User, Client
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-def logout_view(request):
+def logout(request):
     logout(request)
-    
+
 @login_required(login_url="/login/")
 def index(request):
     all_accounts = Account.objects.all()
