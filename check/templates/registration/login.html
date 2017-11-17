@@ -1,8 +1,9 @@
 {% extends "registration/login-base.html" %}
 
 {% block login %}
-
+{% load staticfiles %}
 {% if form.errors %}
+
 <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
 
@@ -15,8 +16,15 @@
     {% endif %}
 {% endif %}
 
+
+
+
 <form class="" method="post" action="{% url 'login' %}">
 {% csrf_token %}
+
+<div class="loginForm">
+<img src="{% static 'check/images/checkPen.png' %}"  height="150" alt="Check Logo" >
+</div>
 
 <table class="loginForm">
 <tr>
@@ -29,14 +37,14 @@
 </tr>
 </table>
 
-<div class="loginForm">
-<input class="button" type="submit" value="login" />
-<input type="hidden" name="next" value="{{ next }}" />
+<div class="loginForm">   
+    <input class="button" type="submit" value="login" />
+    <input type="hidden" name="next" value="{{ next }}" />
 </div>
 </form>
 
 
 {# Assumes you setup the password_reset view in your URLconf #}
-<p class="<loginForm></loginForm>"><a href="{% url 'password_reset' %}">Lost password?</a></p>
+<p class="loginForm>"><a href="{% url 'password_reset' %}">Lost password?</a></p>
 
 {% endblock %}
