@@ -43,5 +43,6 @@ td {
 }
 
 table, td {
-    border: 1em solid white;
+    border: .1em solid white;
+    column-span: 1;
 }

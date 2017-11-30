@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'clients/$', views.ClientIndexView.as_view(), name='clientindex'),
     url(r'banks/$', views.BankIndexView.as_view(), name='bankindex'),
     url(r'users/$', views.UserIndexView.as_view(), name='userindex'),
+    url(r'reports/$', views.ReportIndexView.as_view(), name='reportindex'),
 
     # /check/accounts/account-details/pk/
     url(r'^accounts/account-details/(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
@@ -27,6 +28,7 @@ urlpatterns = [
 
     #/check/check-details/pk/
     url(r'^check/check-details/(?P<pk>[0-9]+)/$', views.CheckDetailView.as_view(), name='checkdetail'),
+    url(r'^check/letterone/(?P<pk>[0-9]+)/$', views.LetterOneDetailView.as_view(), name='letterone'),
 
     # /check/account/add/
     url(r'account/add/$', views.AccountCreate.as_view(), name="account-add"),

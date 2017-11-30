@@ -43,4 +43,7 @@ td {
   text-align: center; }
 
 table, td {
-  border: 1em solid white; }
+  border: .1em solid white;
+  -webkit-column-span: 1;
+  -moz-column-span: 1;
+  column-span: 1; }

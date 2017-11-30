@@ -30,6 +30,13 @@ class CheckIndexView(generic.ListView):
     def get_queryset(self):
         return Check.objects.all()
 
+class ReportIndexView(generic.ListView):
+    template_name = 'check/report.html'
+    context_object_name = 'all_checks'
+
+    def get_queryset(self):
+        return Check.objects.all()
+
 class StoreIndexView(generic.ListView):
     template_name = 'check/store.html'
     context_object_name = 'all_stores'
@@ -82,6 +89,10 @@ class CheckDetailView(generic.DetailView):
     model = Check
     template_name = 'check/checkdetail.html'
 
+class LetterOneDetailView(generic.DetailView):
+    model = Check, Account
+    template_name = 'check/letterone.html'
+    
 class AccountCreate(CreateView):
     model = Account
     fields = ['bank', 'acount_store', 'account_number', 'routing_number', 'account_name', 'account_street', 'account_state', 'account_city', 'account_zip', 'checks_bounced']
