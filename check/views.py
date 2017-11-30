@@ -1,3 +1,5 @@
+from django.views.generic import ListView
+from django.views.generic.detail import SingleObjectMixin
 from django.views import generic
 from django.http import HttpResponse
 from django.template import loader
@@ -89,9 +91,11 @@ class CheckDetailView(generic.DetailView):
     model = Check
     template_name = 'check/checkdetail.html'
 
-class LetterOneDetailView(generic.DetailView):
-    model = Check, Account
-    template_name = 'check/letterone.html'
+#class LetterOneDetailView(SingleObjectMixin, ListView):
+    #template_name = 'check/letterone.html'
+
+    #def get(self, request, *args, **kwargs):
+        
     
 class AccountCreate(CreateView):
     model = Account
