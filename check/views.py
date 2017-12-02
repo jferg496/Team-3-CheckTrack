@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.template import loader
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
-from .models import Account, Check, Bank, Store, User, Client
+from .models import Account, Check, Bank, Store, Client
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
@@ -60,13 +60,6 @@ class BankIndexView(generic.ListView):
     def get_queryset(self):
         return Bank.objects.all()
 
-class UserIndexView(generic.ListView):
-    template_name = 'check/user.html'
-    context_object_name = 'all_users'
-
-    def get_queryset(self):
-        return User.objects.all()
-
 class DetailView(generic.DetailView):
     model = Account
     template_name = 'check/detail.html'
@@ -75,9 +68,7 @@ class BankDetailView(generic.DetailView):
     model = Bank
     template_name = 'check/bankdetail.html'
 
-class UserDetailView(generic.DetailView):
-    model = User
-    template_name = 'check/userdetail.html'
+
 
 class StoreDetailView(generic.DetailView):
     model = Store
@@ -91,10 +82,10 @@ class CheckDetailView(generic.DetailView):
     model = Check
     template_name = 'check/checkdetail.html'
 
-#class LetterOneDetailView(SingleObjectMixin, ListView):
-    #template_name = 'check/letterone.html'
+class LetterOneDetailView(SingleObjectMixin, ListView):
+    template_name = 'check/letterone.html'
 
-    #def get(self, request, *args, **kwargs):
+   
         
     
 class AccountCreate(CreateView):
@@ -103,7 +94,7 @@ class AccountCreate(CreateView):
 
 class CheckCreate(CreateView):
     model = Check
-    fields = ['user', 'account', 'check_amount', 'check_number', 'cashier_name', 'letter_date1', 'letter_date2', 'letter_date3', 'check_status']
+    fields = ['account', 'check_amount', 'check_number', 'cashier_name', 'letter_date1', 'letter_date2', 'letter_date3', 'check_status']
 
 
 class BankCreate(CreateView):
@@ -114,9 +105,7 @@ class StoreCreate(CreateView):
     model = Store
     fields = ['client', 'store_name']
 
-class UserCreate(CreateView):
-    model = User
-    fields = ['user_store', 'user_name', 'user_position']
+
 
 class AccountUpdate(UpdateView):
     model = Account
@@ -124,7 +113,7 @@ class AccountUpdate(UpdateView):
 
 class CheckUpdate(UpdateView):
     model = Check
-    fields = ['user', 'account', 'check_amount', 'check_number', 'cashier_name', 'letter_date1', 'letter_date2', 'letter_date3', 'check_status']
+    fields = ['account', 'check_amount', 'check_number', 'cashier_name', 'letter_date1', 'letter_date2', 'letter_date3', 'check_status']
 
 class BankUpdate(UpdateView):
     model = Bank
@@ -134,9 +123,7 @@ class StoreUpdate(UpdateView):
     model = Store
     fields = ['client', 'store_name']
 
-class UserUpdate(UpdateView):
-    model = User
-    fields = ['user_store', 'user_name', 'user_position']
+
 
 class CheckDelete(DeleteView):
     model = Check
@@ -154,9 +141,6 @@ class StoreDelete(DeleteView):
     model = Store
     success_url = reverse_lazy('check:index')
 
-class UserDelete(DeleteView):
-    model = User
-    success_url = reverse_lazy('check:index')
 
 class ClientDelete(DeleteView):
     model = Client
