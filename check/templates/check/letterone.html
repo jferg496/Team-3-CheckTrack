@@ -6,8 +6,19 @@
 <body>
     <p>
         NOTICE OF DISHONORED CHECK <br/>
-{{ account.account_street }} <br/>
-[Your City, State and Zip Code] <br/>
+<table style="width:25%" border=".1">
+    <tr>
+        <th>Street: {{ check.account.account_street }}</th>
+    </tr>
+</table>
+<table style="width:25%" border=".1">
+        <tr>
+          <th>City: {{ check.account.account_city }}</th>
+          <th>State: {{ check.account.account_state }}</th> 
+          <th>Zip Code: {{ check.account.account_zip }}</th>
+        </tr>
+    </table>
+  <br/>
   
 [Date] <br />
   

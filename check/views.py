@@ -82,9 +82,11 @@ class CheckDetailView(generic.DetailView):
     model = Check
     template_name = 'check/checkdetail.html'
 
-class LetterOneDetailView(SingleObjectMixin, ListView):
+class LetterOneDetailView(generic.DetailView):
+    model = Check
     template_name = 'check/letterone.html'
-
+    def get_queryset(self):
+        return Check.objects.all()
    
         
     
