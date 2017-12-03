@@ -7,13 +7,10 @@
             <h1>Checks</h1>
            
             {% for check in all_checks %}
-
-            {% if check.two_weeks %}
-            <h2>{{ check.entry_date }}</h2>
-
-            <h3><a href="{% url 'check:letterone' check.id %}"><font color="#ffffff">{{ check.account }} - Check Number: {{ check.check_number }}</font></a></h3>
-            {% endif %}
-
+                {% if check.two_weeks %}
+                    <h2>{{ check.entry_date }}</h2>
+                    <h3><a href="{% url 'check:letterone' check.id %}"><font color="#ffffff">{{ check.account }} - Check Number: {{ check.check_number }}</font></a></h3>
+                {% endif %}
             {% endfor %}
         </ul>
 
