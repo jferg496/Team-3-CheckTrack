@@ -1,8 +1,7 @@
 from django.db import models
 from django.core.urlresolvers import reverse
-
-
-
+from datetime import datetime, timedelta
+from django.utils import timezone
 
 class Store(models.Model):
     client = models.ForeignKey('Client', on_delete=models.CASCADE)
@@ -39,13 +38,19 @@ class Check(models.Model):
     check_number = models.IntegerField(max_length=4)
     cashier_name = models.CharField(max_length=20)
     check_status = models.BooleanField(default=False)
+    entry_date = models.DateTimeField(auto_now_add=True, blank=True)
     letter_date1 = models.CharField(max_length=10)
     letter_date2 = models.CharField(max_length=10)
     letter_date3 = models.CharField(max_length=10)
 
     def get_absolute_url(self):
         return reverse('check:checkdetail', kwargs={'pk': self.pk})
-
+    
+    def two_weeks(self):
+        "Returns the person's baby-boomer status."
+        if self.entry_date < (timezone.now() - timedelta(days=14)):
+            return True
+        
     def __str__(self):
         return 'Check Amount: ' + str(self.check_amount) + ' / Check Number: ' + str(self.check_number) + ' / ' + self.cashier_name
 

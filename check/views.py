@@ -8,6 +8,8 @@ from django.core.urlresolvers import reverse_lazy
 from .models import Account, Check, Bank, Store, Client
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from datetime import datetime, timedelta
+from django.utils import timezone
 
 def logout(request):
     logout(request)
@@ -85,9 +87,9 @@ class CheckDetailView(generic.DetailView):
 class LetterOneDetailView(generic.DetailView):
     model = Check
     template_name = 'check/letterone.html'
+    
     def get_queryset(self):
         return Check.objects.all()
-   
         
     
 class AccountCreate(CreateView):
