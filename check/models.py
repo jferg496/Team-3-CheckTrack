@@ -47,8 +47,15 @@ class Check(models.Model):
         return reverse('check:checkdetail', kwargs={'pk': self.pk})
     
     def two_weeks(self):
-        "Returns the person's baby-boomer status."
-        if self.entry_date < (timezone.now() - timedelta(days=14)):
+        if self.entry_date < (timezone.now() - timedelta(days=14)) and self.entry_date > (timezone.now() - timedelta(days=28)):
+            return True
+
+    def four_weeks(self):
+        if self.entry_date < (timezone.now() - timedelta(days=28)) and self.entry_date > (timezone.now() - timedelta(days=56)):
+            return True
+
+    def six_weeks(self):
+        if self.entry_date < (timezone.now() - timedelta(days=56)):
             return True
         
     def __str__(self):
