@@ -112,7 +112,7 @@ class AccountCreate(CreateView):
 
 class CheckCreate(CreateView):
     model = Check
-    fields = ['account', 'check_amount', 'check_number', 'cashier_name', 'letter_date1', 'letter_date2', 'letter_date3', 'check_status']
+    fields = ['account', 'check_amount', 'check_number', 'cashier_name', 'check_status']
 
 
 class BankCreate(CreateView):
@@ -131,24 +131,24 @@ class AccountUpdate(UpdateView):
 
 class CheckUpdate(UpdateView):
     model = Check
-    fields = ['account', 'check_amount', 'check_number', 'cashier_name', 'letter_date1', 'letter_date2', 'letter_date3', 'check_status']
+    fields = ['account', 'check_amount', 'check_number', 'cashier_name', 'check_status']
 
 class LetterOne(UpdateView):
     model = Check
-    fields = ['letter_date1']
+    fields = ['letter_date_1']
     def get_initial(self):
-        return { 'letter_date1': datetime.now() }
+        return { 'letter_date_1': datetime.now() }
 
 class LetterTwo(UpdateView):
     model = Check
-    fields = [ 'letter_date2']
+    fields = [ 'letter_date_2']
     def get_initial(self):
-        return { 'letter_date2': datetime.now() }
+        return { 'letter_date_2': datetime.now() }
 class LetterThree(UpdateView):
     model = Check
-    fields = ['letter_date3']
+    fields = ['letter_date_3']
     def get_initial(self):
-        return { 'letter_date3': datetime.now() }
+        return { 'letter_date_3': datetime.now() }
 
 class BankUpdate(UpdateView):
     model = Bank

@@ -39,21 +39,21 @@ class Check(models.Model):
     cashier_name = models.CharField(max_length=20)
     check_status = models.BooleanField(default=False)
     entry_date = models.DateTimeField(auto_now_add=True, blank=True)
-    letter_date1 = models.DateField(null=True, blank=True)
-    letter_date2 = models.DateField(null=True, blank=True)
-    letter_date3 = models.DateField(null=True, blank=True)
+    letter_date_1 = models.DateField(null=True, blank=True)
+    letter_date_2 = models.DateField(null=True, blank=True)
+    letter_date_3 = models.DateField(null=True, blank=True)
 
     def get_absolute_url(self):
         return reverse('check:checkdetail', kwargs={'pk': self.pk})
     
     def two_weeks(self):
-        if self.letter_date1 is None and self.check_status is False and self.entry_date < (timezone.now() - timedelta(days=14)):
+        if self.letter_date_1 is None and self.check_status is False and self.entry_date < (timezone.now() - timedelta(days=14)):
             return True
     def four_weeks(self):
-        if self.letter_date1 is not None and self.letter_date2 is None and self.check_status is False and self.entry_date < (timezone.now() - timedelta(days=28)):
+        if self.letter_date_1 is not None and self.letter_date_2 is None and self.check_status is False and self.entry_date < (timezone.now() - timedelta(days=28)):
             return True
     def six_weeks(self):
-        if self.letter_date1 is not None and self.letter_date2 is not None and self.letter_date3 is None and self.check_status is False and self.entry_date < (timezone.now() - timedelta(days=42)):
+        if self.letter_date_1 is not None and self.letter_date_2 is not None and self.letter_date_3 is None and self.check_status is False and self.entry_date < (timezone.now() - timedelta(days=42)):
             return True
         
     def __str__(self):
