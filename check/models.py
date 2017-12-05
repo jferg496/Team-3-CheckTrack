@@ -46,13 +46,13 @@ class Check(models.Model):
         return reverse('check:checkdetail', kwargs={'pk': self.pk})
     
     def two_weeks(self):
-        if self.letter_date_1 is None and self.check_status is False and self.entry_date < (timezone.now() - timedelta(days=14)):
+        if self.letter_date_1 is None and self.check_status is False:
             return True
     def four_weeks(self):
-        if self.letter_date_1 is not None and self.letter_date_2 is None and self.check_status is False and self.entry_date < (timezone.now() - timedelta(days=28)):
+        if self.letter_date_1 is not None and self.letter_date_2 is None and self.check_status is False and self.entry_date < (timezone.now() - timedelta(days=14)):
             return True
     def six_weeks(self):
-        if self.letter_date_1 is not None and self.letter_date_2 is not None and self.letter_date_3 is None and self.check_status is False and self.entry_date < (timezone.now() - timedelta(days=42)):
+        if self.letter_date_1 is not None and self.letter_date_2 is not None and self.letter_date_3 is None and self.check_status is False and self.entry_date < (timezone.now() - timedelta(days=28)):
             return True
         
     def __str__(self):
