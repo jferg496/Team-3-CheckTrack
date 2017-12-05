@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
 from django.utils import timezone
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def logout(request):
     logout(request)
@@ -21,84 +22,112 @@ def index(request):
     context = {'all_accounts': all_accounts,}
     return HttpResponse(template.render(context, request))
 
-class AccountIndexView(generic.ListView):
+class AccountIndexView(LoginRequiredMixin, generic.ListView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     template_name = 'check/accounts.html'
     context_object_name = 'all_accounts'
     def get_queryset(self):
         return Account.objects.all()
 
-class CheckIndexView(generic.ListView):
+class CheckIndexView(LoginRequiredMixin, generic.ListView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     template_name = 'check/checks.html'
     context_object_name = 'all_checks'
 
     def get_queryset(self):
         return Check.objects.all()
 
-class ReportIndexView(generic.ListView):
+class ReportIndexView(LoginRequiredMixin, generic.ListView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     template_name = 'check/report.html'
     context_object_name = 'all_checks'
 
     def get_queryset(self):
         return Check.objects.all()
 
-class StoreIndexView(generic.ListView):
+class StoreIndexView(LoginRequiredMixin, generic.ListView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     template_name = 'check/store.html'
     context_object_name = 'all_stores'
 
     def get_queryset(self):
         return Store.objects.all()
 
-class ClientIndexView(generic.ListView):
+class ClientIndexView(LoginRequiredMixin, generic.ListView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     template_name = 'check/client.html'
     context_object_name = 'all_clients'
 
     def get_queryset(self):
         return Client.objects.all()
 
-class BankIndexView(generic.ListView):
+class BankIndexView(LoginRequiredMixin, generic.ListView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     template_name = 'check/bank.html'
     context_object_name = 'all_banks'
 
     def get_queryset(self):
         return Bank.objects.all()
 
-class DetailView(generic.DetailView):
+class DetailView(LoginRequiredMixin, generic.DetailView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Account
     template_name = 'check/detail.html'
 
-class BankDetailView(generic.DetailView):
+class BankDetailView(LoginRequiredMixin, generic.DetailView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Bank
     template_name = 'check/bankdetail.html'
 
 
 
-class StoreDetailView(generic.DetailView):
+class StoreDetailView(LoginRequiredMixin, generic.DetailView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Store
     template_name = 'check/storedetail.html'
 
-class ClientDetailView(generic.DetailView):
+class ClientDetailView(LoginRequiredMixin, generic.DetailView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Client
     template_name = 'check/clientdetail.html'
 
-class CheckDetailView(generic.DetailView):
+class CheckDetailView(LoginRequiredMixin, generic.DetailView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Check
     template_name = 'check/checkdetail.html'
 
-class LetterOneDetailView(generic.DetailView):
+class LetterOneDetailView(LoginRequiredMixin, generic.DetailView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Check
     template_name = 'check/letterone.html'
 
     def get_queryset(self):
         return Check.objects.all()
 
-class LetterTwoDetailView(generic.DetailView):
+class LetterTwoDetailView(LoginRequiredMixin, generic.DetailView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Check
     template_name = 'check/lettertwo.html'
 
     def get_queryset(self):
         return Check.objects.all()
 
-class LetterThreeDetailView(generic.DetailView):
+class LetterThreeDetailView(LoginRequiredMixin, generic.DetailView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Check
     template_name = 'check/letterthree.html'
 
@@ -106,77 +135,109 @@ class LetterThreeDetailView(generic.DetailView):
         return Check.objects.all()
         
     
-class AccountCreate(CreateView):
+class AccountCreate(LoginRequiredMixin, CreateView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Account
     fields = ['bank', 'acount_store', 'account_number', 'bank', 'account_name', 'account_street', 'account_state', 'account_city', 'account_zip', 'checks_bounced']
 
-class CheckCreate(CreateView):
+class CheckCreate(LoginRequiredMixin, CreateView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Check
     fields = ['account', 'check_amount', 'check_number', 'cashier_name', 'check_status']
 
 
-class BankCreate(CreateView):
+class BankCreate(LoginRequiredMixin, CreateView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Bank
     fields = ['bank_name']
 
-class StoreCreate(CreateView):
+class StoreCreate(LoginRequiredMixin, CreateView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Store
     fields = ['client', 'store_name']
 
 
 
-class AccountUpdate(UpdateView):
+class AccountUpdate(LoginRequiredMixin, UpdateView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Account
     fields = ['account_number', 'bank' ,'account_name', 'account_street', 'account_state', 'account_city', 'account_zip', 'checks_bounced']
 
-class CheckUpdate(UpdateView):
+class CheckUpdate(LoginRequiredMixin, UpdateView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Check
     fields = ['account', 'check_amount', 'check_number', 'cashier_name', 'check_status']
 
-class LetterOne(UpdateView):
+class LetterOne(LoginRequiredMixin, UpdateView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Check
     fields = ['letter_date_1']
     def get_initial(self):
         return { 'letter_date_1': datetime.now() }
 
-class LetterTwo(UpdateView):
+class LetterTwo(LoginRequiredMixin, UpdateView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Check
     fields = [ 'letter_date_2']
     def get_initial(self):
         return { 'letter_date_2': datetime.now() }
-class LetterThree(UpdateView):
+class LetterThree(LoginRequiredMixin, UpdateView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Check
     fields = ['letter_date_3']
     def get_initial(self):
         return { 'letter_date_3': datetime.now() }
 
-class BankUpdate(UpdateView):
+class BankUpdate(LoginRequiredMixin, UpdateView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Bank
     fields = ['bank_name']
 
-class StoreUpdate(UpdateView):
+class StoreUpdate(LoginRequiredMixin, UpdateView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Store
     fields = ['client', 'store_name']
 
 
 
-class CheckDelete(DeleteView):
+class CheckDelete(LoginRequiredMixin, DeleteView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Check
     success_url = reverse_lazy('check:checkindex')
 
-class AccountDelete(DeleteView):
+class AccountDelete(LoginRequiredMixin, DeleteView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Account
     success_url = reverse_lazy('check:accountindex')
 
-class BankDelete(DeleteView):
+class BankDelete(LoginRequiredMixin, DeleteView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Bank
     success_url = reverse_lazy('check:index')
 
-class StoreDelete(DeleteView):
+class StoreDelete(LoginRequiredMixin, DeleteView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Store
     success_url = reverse_lazy('check:index')
 
 
-class ClientDelete(DeleteView):
+class ClientDelete(LoginRequiredMixin, DeleteView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
     model = Client
     success_url = reverse_lazy('check:index')
