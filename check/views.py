@@ -87,7 +87,21 @@ class CheckDetailView(generic.DetailView):
 class LetterOneDetailView(generic.DetailView):
     model = Check
     template_name = 'check/letterone.html'
-    
+
+    def get_queryset(self):
+        return Check.objects.all()
+
+class LetterTwoDetailView(generic.DetailView):
+    model = Check
+    template_name = 'check/lettertwo.html'
+
+    def get_queryset(self):
+        return Check.objects.all()
+
+class LetterThreeDetailView(generic.DetailView):
+    model = Check
+    template_name = 'check/letterthree.html'
+
     def get_queryset(self):
         return Check.objects.all()
         
@@ -118,6 +132,23 @@ class AccountUpdate(UpdateView):
 class CheckUpdate(UpdateView):
     model = Check
     fields = ['account', 'check_amount', 'check_number', 'cashier_name', 'letter_date1', 'letter_date2', 'letter_date3', 'check_status']
+
+class LetterOne(UpdateView):
+    model = Check
+    fields = ['letter_date1']
+    def get_initial(self):
+        return { 'letter_date1': datetime.now() }
+
+class LetterTwo(UpdateView):
+    model = Check
+    fields = [ 'letter_date2']
+    def get_initial(self):
+        return { 'letter_date2': datetime.now() }
+class LetterThree(UpdateView):
+    model = Check
+    fields = ['letter_date3']
+    def get_initial(self):
+        return { 'letter_date3': datetime.now() }
 
 class BankUpdate(UpdateView):
     model = Bank

@@ -26,6 +26,13 @@ urlpatterns = [
     #/check/check-details/pk/
     url(r'^check/check-details/(?P<pk>[0-9]+)/$', views.CheckDetailView.as_view(), name='checkdetail'),
     url(r'^check/letterone/(?P<pk>[0-9]+)/$', views.LetterOneDetailView.as_view(), name='letterone'),
+    url(r'^check/letterone/(?P<pk>[0-9]+)/update/$', views.LetterOne.as_view(), name='letteronesent'),
+
+    url(r'^check/lettertwo/(?P<pk>[0-9]+)/$', views.LetterTwoDetailView.as_view(), name='lettertwo'),
+    url(r'^check/lettertwo/(?P<pk>[0-9]+)/update/$', views.LetterTwo.as_view(), name='lettertwosent'),
+
+    url(r'^check/letterthree/(?P<pk>[0-9]+)/$', views.LetterThreeDetailView.as_view(), name='letterthree'),
+    url(r'^check/letterthree/(?P<pk>[0-9]+)/update/$', views.LetterThree.as_view(), name='letterthreesent'),
 
     # /check/account/add/
     url(r'account/add/$', views.AccountCreate.as_view(), name="account-add"),

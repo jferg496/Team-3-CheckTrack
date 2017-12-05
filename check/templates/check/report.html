@@ -4,46 +4,57 @@
 <font color="#ffffff">
         
         <ul>
-            <h1>Checks</h1>
-           
+            <h1>Reports</h1>
+            <table style="width:41%" border=".1">
+                    <tr>
+                        <th><font size="4">Letter One Checks</th></font>
+                    </tr>
+                </table>
             {% for check in all_checks %}
+            
                 {% if check.two_weeks %}
-                    <table style="width:25%" border=".1">
-                        <tr>
-                            <th>Letter One Checks</th>
-                        </tr>
-                    </table>
-                    <table style="width:25%" border=".1">
+                    
+                    <table style="width:41%" border=".1">
                             <tr>
-                              <th><h3><a href="{% url 'check:letterone' check.id %}"><font color="#ffffff">{{ check.account }} - Check Number: {{ check.check_number }}</font></a></h3>
+                              <th><a href="{% url 'check:letterone' check.id %}"><font color="#ffffff">{{ check.account }} - Check Number: {{ check.check_number }}</font></a>
                               </th>
                             </tr>
                     </table>
                     {% endif %}
-                </b>
-                {% if check.four_weeks %}
-                <table style="width:25%" border=".1">
-                    <tr>
-                        <th>Letter Two Checks</th>
-                    </tr>
-                </table>
-                <table style="width:25%" border=".1">
+                    {% endfor %}
+                <table style="width:41%" border=".1">
+                        <tr height = 20px></tr>
                         <tr>
-                          <th><h3><a href="{% url 'check:letterone' check.id %}"><font color="#ffffff">{{ check.account }} - Check Number: {{ check.check_number }}</font></a></h3>
+                            <th><font size="4">Letter Two Checks</th></font>
+                        </tr>
+                    </table>
+                    
+                {% for check in all_checks %}
+                
+                {% if check.four_weeks %}
+                
+                <table style="width:41%" border=".1">
+                        <tr>
+                          <th><a href="{% url 'check:lettertwo' check.id %}"><font color="#ffffff">{{ check.account }} - Check Number: {{ check.check_number }}</font></a>
                           </th>
                         </tr>
                 </table>
                 {% endif %}
+                {% endfor %}
             </b>
-            {% if check.six_weeks %}
-            <table style="width:25%" border=".1">
-                <tr>
-                    <th>Letter Three Checks</th>
-                </tr>
-            </table>
-            <table style="width:25%" border=".1">
+            <table style="width:41%" border=".1">
+                    <tr height = 20px></tr>
                     <tr>
-                      <th><h3><a href="{% url 'check:letterone' check.id %}"><font color="#ffffff">{{ check.account }} - Check Number: {{ check.check_number }}</font></a></h3>
+                        <th><font size="4">Letter Three Checks</th></font>
+                    </tr>
+                </table>
+            {% for check in all_checks %}
+            
+            {% if check.six_weeks %}
+            
+            <table style="width:41%" border=".1">
+                    <tr>
+                      <th><a href="{% url 'check:letterthree' check.id %}"><font color="#ffffff">{{ check.account }} - Check Number: {{ check.check_number }}</font></a>
                       </th>
                     </tr>
             </table>

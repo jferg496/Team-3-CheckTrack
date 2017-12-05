@@ -20,7 +20,7 @@ class Account(models.Model):
     account_number = models.IntegerField(max_length=10)
     routing_number = models.IntegerField(max_length=10)
     account_name = models.CharField(max_length=20)
-    account_street = models.CharField(max_length=20)
+    account_street = models.CharField(max_length=50)
     account_state = models.CharField(max_length=20)
     account_city = models.CharField(max_length=20)
     account_zip = models.CharField(max_length=10)
@@ -39,23 +39,21 @@ class Check(models.Model):
     cashier_name = models.CharField(max_length=20)
     check_status = models.BooleanField(default=False)
     entry_date = models.DateTimeField(auto_now_add=True, blank=True)
-    letter_date1 = models.CharField(max_length=10)
-    letter_date2 = models.CharField(max_length=10)
-    letter_date3 = models.CharField(max_length=10)
+    letter_date1 = models.DateField(null=True, blank=True)
+    letter_date2 = models.DateField(null=True, blank=True)
+    letter_date3 = models.DateField(null=True, blank=True)
 
     def get_absolute_url(self):
         return reverse('check:checkdetail', kwargs={'pk': self.pk})
     
     def two_weeks(self):
-        if self.entry_date < (timezone.now() - timedelta(days=14)) and self.entry_date > (timezone.now() - timedelta(days=28)):
+        if self.letter_date1 is None and self.check_status is False and self.entry_date < (timezone.now() - timedelta(days=14)):
             return True
-
     def four_weeks(self):
-        if self.entry_date < (timezone.now() - timedelta(days=28)) and self.entry_date > (timezone.now() - timedelta(days=56)):
+        if self.letter_date1 is not None and self.letter_date2 is None and self.check_status is False and self.entry_date < (timezone.now() - timedelta(days=28)):
             return True
-
     def six_weeks(self):
-        if self.entry_date < (timezone.now() - timedelta(days=56)):
+        if self.letter_date1 is not None and self.letter_date2 is not None and self.letter_date3 is None and self.check_status is False and self.entry_date < (timezone.now() - timedelta(days=42)):
             return True
         
     def __str__(self):
