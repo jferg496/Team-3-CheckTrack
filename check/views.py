@@ -108,7 +108,7 @@ class LetterThreeDetailView(generic.DetailView):
     
 class AccountCreate(CreateView):
     model = Account
-    fields = ['bank', 'acount_store', 'account_number', 'routing_number', 'account_name', 'account_street', 'account_state', 'account_city', 'account_zip', 'checks_bounced']
+    fields = ['bank', 'acount_store', 'account_number', 'bank', 'account_name', 'account_street', 'account_state', 'account_city', 'account_zip', 'checks_bounced']
 
 class CheckCreate(CreateView):
     model = Check
@@ -127,7 +127,7 @@ class StoreCreate(CreateView):
 
 class AccountUpdate(UpdateView):
     model = Account
-    fields = ['account_number', 'routing_number', 'account_name', 'account_street', 'account_state', 'account_city', 'account_zip', 'checks_bounced']
+    fields = ['account_number', 'bank' ,'account_name', 'account_street', 'account_state', 'account_city', 'account_zip', 'checks_bounced']
 
 class CheckUpdate(UpdateView):
     model = Check
