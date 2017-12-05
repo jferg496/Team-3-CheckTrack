@@ -18,7 +18,6 @@ class Account(models.Model):
     acount_store = models.ForeignKey('Store', on_delete=models.CASCADE)
     bank = models.ForeignKey('Bank', on_delete=models.CASCADE)
     account_number = models.IntegerField(max_length=10)
-    routing_number = models.IntegerField(max_length=10)
     account_name = models.CharField(max_length=20)
     account_street = models.CharField(max_length=50)
     account_state = models.CharField(max_length=20)
@@ -67,9 +66,9 @@ class Client(models.Model):
 
 class Bank(models.Model):
     bank_name = models.CharField(max_length=50)
-
+    routing_number = models.IntegerField(default=1, max_length=9)
     def get_absolute_url(self):
         return reverse('check:bankdetail', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return self.bank_name
+        return self.bank_name + ' - ' + str(self.routing_number)
