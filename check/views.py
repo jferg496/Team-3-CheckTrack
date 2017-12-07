@@ -4,7 +4,7 @@ from django.views import generic
 from django.http import HttpResponse
 from django.template import loader
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from .models import Account, Check, Bank, Store, Client
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
