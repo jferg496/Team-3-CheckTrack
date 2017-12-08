@@ -2,15 +2,19 @@
 {% block body %}
 <font color="#ffffff">
        
-        <ul>
                 <h1>Accounts</h1>
-            {% for account in all_accounts %}
-            
-                <h3>
-                <a href="{% url 'check:detail' account.id %}"><font color="#ffffff">{{ account.account_name }} - Account Number: {{ account.account_number }}</font></a>
-                </h3>
-            
-            {% endfor %}
-        </ul>
+
+        <table class="Form-table">
+            <tr>
+                <th>Account Name</th>
+                <th>Account Number</th>
+            </tr>
+        {% for account in all_accounts %}
+            <tr>
+                <td><a href="{% url 'check:detail' account.id %}"><font color="#ffffff">{{ account.account_name }}</a></td>
+                <td>{{ account.account_number }}</td>
+            </tr>
+        {% endfor %}
+        </table>
     </font>
 {% endblock %}

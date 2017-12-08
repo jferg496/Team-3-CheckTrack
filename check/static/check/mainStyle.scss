@@ -15,6 +15,10 @@ body {
   -ms-flex-pack: center;
   justify-content: center;
   color: white; 
+
+  &-row{
+    color: black;
+  }
   
   &-table {
     padding: 1em;
@@ -31,7 +35,27 @@ body {
 //Styling for the Tables displaying detailed 
 //information on accounts, checks, and reports
 .detailTable{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: white;
   border-color: white;
+
+  &-table {
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+
+    td{
+       border: .1em solid white;
+       column-span: 1;
+       padding: .5em; }
+  }
 }
 
 .button {
