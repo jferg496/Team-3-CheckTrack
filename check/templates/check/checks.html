@@ -2,15 +2,20 @@
 {% block body %}
 <div class="wrapper">
 <font color="#ffffff">
-        
-        <ul>
             <h1>Checks</h1>
-            {% for check in all_checks %}
-            <h3><a href="{% url 'check:checkdetail' check.id %}"><font color="#ffffff">{{ check.account }} - Check Number: {{ check.check_number }}</font></a></h3>
-            {% endfor %}
-        </ul>
 
-
+        <table class="Form-table">
+            <tr>
+                <th>Check Account</th>
+                <th>Check Number</th>
+            </tr>
+        {% for check in all_checks %}
+            <tr>
+                <td><a href="{% url 'check:checkdetail' check.id %}"><font color="#ffffff">{{ check.account }}</a></td>
+                <td>{{ check.check_number }}</td>
+            </tr>
+        {% endfor %}
+        </table>
     </font>
 </div>
 {% endblock %}
