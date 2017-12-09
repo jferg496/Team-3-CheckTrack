@@ -2,7 +2,7 @@
 {% block title %}Check Details{% endblock %}
 {% block body %}
 <font color="#ffffff">
-<h1>Check Details <a href="{% url 'check:check-update' check.id %}"><font color="#ffffff">-edit-</font></a>
+<h1>Check Details <a href="{% url 'check:check-update' check.id %}"><span class="glyphicon glyphicon-edit"></span></a>
     <form action="{% url 'check:check-delete' check.id %}" method="post" style="display: inline;">
     {% csrf_token %}
     <input type="hidden" name="check_id" value="{{ check.id }}"/>

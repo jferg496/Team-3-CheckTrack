@@ -17,7 +17,7 @@
                         {% for check in all_checks %}
                         {% if check.two_weeks %}
                             <tr>
-                                <td><a href="{% url 'check:checkdetail' check.id %}"><font color="#ffffff">{{ check.account }}</a></td>
+                                <td><a href="{% url 'check:letterone' check.id %}"><font color="#ffffff">{{ check.account }}</a></td>
                                 <td>{{ check.check_number }}</td>
                             </tr>
                         {% endif %}
@@ -35,7 +35,7 @@
                         {% for check in all_checks %}
                         {% if check.four_weeks %}
                             <tr>
-                                <td><a href="{% url 'check:checkdetail' check.id %}"><font color="#ffffff">{{ check.account }}</a></td>
+                                <td><a href="{% url 'check:lettertwo' check.id %}"><font color="#ffffff">{{ check.account }}</a></td>
                                 <td>{{ check.check_number }}</td>
                             </tr>
                         {% endif %}
@@ -53,7 +53,7 @@
                         {% for check in all_checks %}
                         {% if check.six_weeks %}
                             <tr>
-                                <td><a href="{% url 'check:checkdetail' check.id %}"><font color="#ffffff">{{ check.account }}</a></td>
+                                <td><a href="{% url 'check:letterthree' check.id %}"><font color="#ffffff">{{ check.account }}</a></td>
                                 <td>{{ check.check_number }}</td>
                             </tr>
                         {% endif %}
